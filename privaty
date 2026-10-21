@@ -1,0 +1,58 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Приваты, экономика и аукцион на сервере — AnarchyMine</title><meta name="description" content="Как защитить базу привата на анархии AnarchyMine, как заработать деньги, где купить и продать вещи: аукцион, магазин, наборы."><meta name="robots" content="index, follow"><link rel="canonical" href="https://play.anarchymine.ru/privaty"><meta property="og:type" content="article"><meta property="og:site_name" content="AnarchyMine"><meta property="og:locale" content="ru_RU"><meta property="og:url" content="https://play.anarchymine.ru/privaty"><meta property="og:title" content="Приваты, экономика и аукцион на сервере — AnarchyMine"><meta property="og:description" content="Как защитить базу привата на анархии AnarchyMine, как заработать деньги, где купить и продать вещи: аукцион, магазин, наборы."><meta property="og:image" content="https://play.anarchymine.ru/og.png"><style>body{margin:0;background:#1d1d1d;color:#e0e0e0;font:16px/1.6 system-ui,sans-serif}main{max-width:760px;margin:0 auto;padding:24px 16px 64px}h1{font-size:26px;color:#ffcf40}h2{font-size:19px;margin-top:28px;color:#fff}a{color:#7cc4ff}nav{margin-bottom:20px;font-size:14px}nav a{margin-right:14px;display:inline-block}code{color:#ffcf40}</style><!-- Yandex.Metrika counter (tools/seo_inject.py puts the number from web/seo/metrika_id); webvisor/clickmap are
+     useless over a canvas game. window.amGoal(name) reports a goal (the game calls it: menu shown, joined a server);
+     window.amParams(json) adds visit parameters (the game's frame rate reports). -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=113258943", "ym");
+ym(113258943, "init", {ssr: true, clickmap: false, referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true});
+window.amGoal = function (name) { try { ym(113258943, "reachGoal", name); } catch (e) {} };
+window.amParams = function (json) { try { ym(113258943, "params", JSON.parse(json)); } catch (e) {} };
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113258943" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- VK Ads pixel (Top.Mail.Ru counter; tools/seo_inject.py puts the number from web/seo/vk_pixel_id): page view +
+     the same goals as Metrika — window.amGoal is wrapped so every game goal also goes to VK (ads optimization). -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3800632", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+(function () {
+  var prev = window.amGoal;
+  window.amGoal = function (name) {
+    if (prev) prev(name);
+    try { _tmr.push({type: "reachGoal", id: "3800632", goal: name}); } catch (e) {}
+  };
+})();
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3800632;js=na" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
+</head><body><main><nav><a href="/">Играть</a><a href="/kak-igrat">Как играть</a><a href="/anarhiya">Анархия</a><a href="/privaty">Приваты</a><a href="/s-telefona">С телефона</a><a href="/faq">Вопросы</a><a href="/donate">Донат</a></nav><h1>Приваты и экономика</h1>
+<h2>Как заприватить базу</h2>
+<p>Приват ставится обычным блоком, без команд: поставьте <b>золотой</b>, <b>алмазный</b> или <b>изумрудный блок</b>, и территория вокруг станет вашей.</p>
+<ul>
+<li>Золотой блок — участок 21×21</li>
+<li>Алмазный — 41×41</li>
+<li>Изумрудный — 71×71</li>
+</ul>
+<p>Чужие не могут ломать и ставить блоки и открывать сундуки у блока привата. Это анархия, поэтому PvP и взрывы внутри работают, но сам блок привата переживает любой взрыв. В чужом привате нельзя поставить дом и телепортироваться туда.</p>
+<h2>Как заработать</h2>
+<ul>
+<li>Каждое очко опыта приносит немного денег — фармить мобов и руду выгодно.</li>
+<li>Ивент «Золотой блок» платит тем, кто удерживает его.</li>
+<li>Продавайте вещи другим игрокам на аукционе.</li>
+</ul>
+<h2>Где тратить</h2>
+<ul>
+<li><code>/ah</code> — аукцион игроков</li>
+<li><code>/shop</code> — магазин редких предметов</li>
+<li><code>/pay</code> — перевод другому игроку, <code>/bal</code> и <code>/baltop</code> — баланс и топ богачей</li>
+<li><code>/kit</code> — бесплатные стартовые наборы</li>
+</ul>
+<p><a href="/">Играть →</a></p>
+</main></body></html>

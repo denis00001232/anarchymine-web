@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Донат — AnarchyMine</title>
+<meta name="description" content="Донат AnarchyMine: привилегии, игровая валюта, элитры, спавнеры, яйца призыва и зачарованные книги. Оплата картой или через СБП, выдача автоматически.">
+<link rel="icon" href="/index.icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0d0b;--bg2:#17130f;--card:#1e1913;--card2:#262017;--line:#3a3024;
+  --text:#efe6d8;--muted:#a8998a;--gold:#ffc63d;--gold2:#ff9d2e;--red:#ff5d5d;--green:#5be08a;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:hidden}
+a{color:var(--gold)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* hero: night sky over pixel hills */
+.hero{position:relative;padding:56px 0 88px;background:
+  radial-gradient(1200px 500px at 70% -10%,#3b2a12 0%,transparent 60%),
+  linear-gradient(#0c0b14,#151020 55%,var(--bg))}
+.stars{position:absolute;inset:0;pointer-events:none;background-image:
+  radial-gradient(1px 1px at 10% 20%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 30% 60%,#fff6 50%,transparent 51%),
+  radial-gradient(2px 2px at 55% 25%,#fffa 50%,transparent 51%),radial-gradient(1px 1px at 75% 45%,#fff7 50%,transparent 51%),
+  radial-gradient(1px 1px at 90% 15%,#fff9 50%,transparent 51%),radial-gradient(2px 2px at 20% 85%,#fff5 50%,transparent 51%)}
+.hills{position:absolute;left:0;right:0;bottom:0;height:56px;
+  background:linear-gradient(90deg,#2a2016 0 6%,#231b12 6% 14%,#2a2016 14% 27%,#1f1810 27% 33%,#2a2016 33% 52%,#231b12 52% 64%,#2a2016 64% 81%,#1f1810 81% 88%,#2a2016 88%);
+  clip-path:polygon(0 60%,6% 60%,6% 30%,14% 30%,14% 50%,27% 50%,27% 20%,33% 20%,33% 45%,52% 45%,52% 25%,64% 25%,64% 55%,81% 55%,81% 35%,88% 35%,88% 50%,100% 50%,100% 100%,0 100%)}
+nav.top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative}
+.brand{font:800 20px Unbounded,sans-serif;color:var(--gold);text-decoration:none;letter-spacing:.5px;text-shadow:0 2px 0 #7a4a00}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:12px 20px;
+  font:700 15px Manrope,sans-serif;cursor:pointer;text-decoration:none;transition:transform .08s,filter .15s}
+.btn:active{transform:translateY(1px)}
+.btn-ghost{background:#ffffff12;color:var(--text);border:1px solid #ffffff22}
+.btn-gold{background:linear-gradient(var(--gold),var(--gold2));color:#2a1700;box-shadow:0 4px 0 #9a5a00,0 10px 30px #ff9d2e33}
+.btn-gold:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+h1{font:800 clamp(30px,6vw,56px)/1.1 Unbounded,sans-serif;margin:40px 0 14px;position:relative;max-width:760px}
+h1 span{color:var(--gold)}
+.lead{font-size:clamp(16px,2.2vw,19px);color:#d9cbb6;max-width:640px;position:relative;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative}
+.badge{background:#ffffff10;border:1px solid #ffffff1f;border-radius:999px;padding:6px 14px;font-size:14px;color:#e8dccb}
+
+h2{font:800 clamp(22px,3.4vw,30px) Unbounded,sans-serif;margin:0 0 18px}
+section{padding:48px 0}
+.grid{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+
+/* products */
+.cat{font:800 18px Unbounded,sans-serif;margin:26px 0 12px;color:#e9d9bf}
+.cat:first-child{margin-top:0}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.product{position:relative;background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:16px;cursor:pointer;
+  transition:border-color .15s,transform .15s;display:flex;flex-direction:column;gap:10px}
+.product:hover{transform:translateY(-2px);border-color:#5a4a34}
+.product.sel{border-color:var(--gold);box-shadow:0 0 0 4px #ffc63d22}
+.product input{position:absolute;opacity:0;pointer-events:none}
+.preview{height:96px;border-radius:10px;background:#0d0b09 linear-gradient(#17141f,#0d0b09);display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;font:700 18px Manrope,sans-serif}
+.preview canvas{position:absolute;inset:0;width:100%;height:100%}
+.ptitle{font:700 17px Unbounded,sans-serif}
+.pdesc{color:var(--muted);font-size:14px}
+.price{font:800 20px Unbounded,sans-serif;color:var(--gold);margin-top:auto}
+.price small{font:600 13px Manrope,sans-serif;color:var(--muted)}
+.icon{width:64px;height:64px;image-rendering:pixelated;filter:drop-shadow(0 4px 0 #0009)}
+.preview .row{display:flex;align-items:center;gap:10px;max-width:92%;font-size:15px}
+.preview .pn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.glint{position:relative;display:inline-block;-webkit-mask-size:100%;mask-size:100%}
+.glint::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,#c78bff88 45%,#ffffff66 50%,#c78bff88 55%,transparent 70%);
+  background-size:300% 100%;animation:glint 2.6s linear infinite;-webkit-mask:var(--m) center/100% no-repeat;mask:var(--m) center/100% no-repeat;mix-blend-mode:screen}
+@keyframes glint{from{background-position:150% 0}to{background-position:-150% 0}}
+.kit{background:#0f0d0b;border:1px solid var(--line);border-radius:10px;padding:10px}
+.kit-h{font-size:12px;font-weight:700;color:#e9d9bf;margin-bottom:8px}
+.kit-g{display:flex;flex-wrap:wrap;gap:4px}
+.slot{position:relative;width:40px;height:40px;background:#8b8b8b;border:2px solid;border-color:#373737 #fff #fff #373737;display:flex;align-items:center;justify-content:center}
+.slot img{width:32px;height:32px;image-rendering:pixelated}
+.slot b{position:absolute;right:1px;bottom:-2px;font:700 13px Manrope,sans-serif;color:#fff;text-shadow:2px 2px 0 #3f3f3f}
+.slot.ench::after{content:"";position:absolute;inset:2px;background:linear-gradient(115deg,transparent 30%,#c78bff66 50%,transparent 70%);background-size:300% 100%;animation:glint 2.6s linear infinite;pointer-events:none;mix-blend-mode:screen}
+.tag{position:absolute;right:10px;bottom:8px;font:700 11px Manrope,sans-serif;font-style:normal;background:#ffc63d;color:#2a1700;border-radius:6px;padding:2px 6px}
+.tabs{display:inline-flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 18px}
+.tab{border:0;border-radius:9px;padding:10px 18px;background:transparent;color:var(--muted);font:700 15px Manrope,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.tab:hover{color:var(--text)}
+.tab.on{background:linear-gradient(var(--gold),var(--gold2));color:#2a1700;box-shadow:0 3px 0 #9a5a00}
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(68px,1fr));gap:6px}
+.term{position:relative;background:#0f0d0b;border:2px solid var(--line);border-radius:10px;padding:8px 4px 6px;text-align:center;cursor:pointer;
+  font:inherit;color:var(--text);transition:border-color .15s,background .15s}
+.term:hover{border-color:#5a4a34}
+.term b{display:block;font:700 13px Manrope,sans-serif}
+.term span{display:block;font:800 13px Unbounded,sans-serif;color:var(--gold);margin-top:2px;white-space:nowrap}
+.term i{position:absolute;top:-9px;right:-4px;font:700 10px Manrope,sans-serif;font-style:normal;background:var(--green);color:#062a12;border-radius:6px;padding:1px 5px}
+.term.on{border-color:var(--gold);background:#ffc63d1a}
+.permonth{font:600 13px Manrope,sans-serif;color:var(--muted)}
+.check{position:absolute;top:24px;right:24px;z-index:1;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);background:var(--bg2)}
+.product.sel .check{background:var(--gold);border-color:var(--gold)}
+.product.sel .check::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;border:solid #2a1700;border-width:0 3px 3px 0;transform:rotate(45deg)}
+
+/* order form */
+.order{position:sticky;top:16px;background:linear-gradient(var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;padding:22px}
+.order h3{font:800 19px Unbounded,sans-serif;margin:0 0 14px}
+label.f{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+.f-hint{font-size:12px;color:var(--muted);margin-top:4px}
+input.in{width:100%;background:#0f0d0b;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);font:16px Manrope,sans-serif}
+input.in:focus{outline:2px solid #ffc63d66;border-color:var(--gold)}
+input.in.bad{border-color:var(--red)}
+.summary{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--line);margin-top:18px;padding-top:14px}
+.summary b{font:800 24px Unbounded,sans-serif;color:var(--gold)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#cdbfad;margin:16px 0}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex:none}
+.order .btn{width:100%;font-size:16px;padding:15px}
+.msg{margin-top:12px;font-size:14px;border-radius:10px;padding:10px 12px;display:none}
+.msg.err{display:block;background:#ff5d5d1a;border:1px solid #ff5d5d55;color:#ffb3b3}
+.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+.pay-methods span{border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+
+.banner{border-radius:14px;padding:16px 18px;margin:24px 0 0;position:relative;display:none}
+.banner.ok{background:#5be08a1a;border:1px solid #5be08a66}
+
+/* how it works / faq */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.step::before{counter-increment:s;content:counter(s);display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;
+  border-radius:9px;background:var(--gold);color:#2a1700;font:800 16px Unbounded,sans-serif;margin-bottom:10px}
+.step b{display:block;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{color:#cdbfad;margin:10px 0 0}
+
+footer{border-top:1px solid var(--line);background:var(--bg2);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
+footer h4{color:var(--text);margin:0 0 8px;font:700 14px Unbounded,sans-serif}
+footer a{color:#e7c983;display:block;margin:4px 0}
+.disclaimer{margin-top:24px;font-size:12px}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .order{position:static}
+  .hero{padding:32px 0 76px}
+}
+@media (max-width:480px){
+  .products{grid-template-columns:1fr}
+  nav.top .btn-ghost{padding:10px 14px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="stars"></div>
+  <div class="wrap">
+    <nav class="top">
+      <a class="brand" href="/">AnarchyMine</a>
+      <a class="btn btn-ghost" href="/">▶ Играть</a>
+    </nav>
+    <h1>Поддержи сервер — <span>получи бонусы</span></h1>
+    <p class="lead">Привилегии, игровая валюта, элитры, спавнеры и книги — выдаются автоматически сразу после оплаты. Все деньги идут на сервер и развитие игры.</p>
+    <div class="badges">
+      <span class="badge">⚡ Выдача автоматически за пару минут</span>
+      <span class="badge">🎁 Можно подарить другу</span>
+      <span class="badge">💳 Карты и СБП</span>
+    </div>
+    <div class="banner ok" id="paid">✅ <b>Оплата принята — спасибо!</b> Привилегии и деньги зачислены, предметы появятся в инвентаре (если вы не в игре — при следующем входе). Чек придёт на почту. Если за 24 часа ничего не появилось, напишите на <a href="mailto:anarchymine@mail.ru">anarchymine@mail.ru</a>.</div>
+  </div>
+  <div class="hills"></div>
+</header>
+
+<main>
+  <section class="wrap">
+    <div class="grid">
+      <div>
+        <h2>Каталог</h2>
+        <div class="tabs" role="tablist">
+          <button class="tab on" type="button" role="tab" data-tab="priv">👑 Привилегии</button>
+          <button class="tab" type="button" role="tab" data-tab="res">💎 Ресурсы</button>
+        </div>
+        <div id="products"></div>
+      </div>
+      <form class="order" id="order" novalidate>
+        <h3>Оформление</h3>
+        <label class="f" for="nick">Ваш ник в игре</label>
+        <input class="in" id="nick" name="nick" autocomplete="username" maxlength="16" placeholder="Например, StoneBear48874" required>
+        <div class="f-hint">Латиница, цифры и _ — как в игре. Можно указать ник друга, чтобы сделать подарок.</div>
+        <label class="f" for="email">Почта для чека</label>
+        <input class="in" id="email" name="email" type="email" autocomplete="email" placeholder="you@mail.ru" required>
+        <div class="summary"><span id="sel-name">Выберите товар слева</span><b id="sel-price">—</b></div>
+        <label class="consent"><input type="checkbox" id="consent">
+          <span>Я принимаю условия <a href="offer.html" target="_blank">публичной оферты</a> и <a href="refund.html" target="_blank">порядка возврата</a>, даю <a href="consent.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank">политикой</a>.</span></label>
+        <button class="btn btn-gold" id="pay" type="submit">Перейти к оплате</button>
+        <div class="msg" id="msg"></div>
+        <div class="pay-methods"><span>Банковские карты</span><span>СБП</span><span>ЮMoney</span><span>Оплата через ЮKassa</span></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Как это работает</h2>
+    <div class="steps">
+      <div class="step"><b>Выберите товар</b><p>Цены указаны в рублях. Привилегии — на 1, 3, 6 или 12 месяцев: чем дольше, тем дешевле месяц. Продление складывается с оставшимся сроком.</p></div>
+      <div class="step"><b>Укажите ник и почту</b><p>Ник — тот, под которым вы играете. На почту придёт электронный чек.</p></div>
+      <div class="step"><b>Оплатите</b><p>Оплата проходит на защищённой странице ЮKassa. Данные карты мы не видим.</p></div>
+      <div class="step"><b>Получите в игре</b><p>Привилегии и деньги зачисляются сразу, даже если вы не в игре. Предметы выдаются в инвентарь, когда вы в игре, или при следующем входе.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <h2>Вопросы</h2>
+    <details><summary>Что будет, если у меня отберут купленные вещи?</summary><p>AnarchyMine — анархия: предметы можно потерять при смерти, их могут украсть или взорвать. Это часть игры, и потерянные в игре предметы и деньги не компенсируются. Привилегии при смерти не теряются.</p></details>
+    <details><summary>Куда придут предметы, если инвентарь полон?</summary><p>Предметы, которые не поместились, выпадут рядом с вами. Освободите место перед входом в игру.</p></details>
+    <details><summary>Когда я получу покупку?</summary><p>Обычно в течение пары минут после оплаты. Если вы не в игре — при следующем входе. Если прошло больше 24 часов, напишите на <a href="mailto:anarchymine@mail.ru">anarchymine@mail.ru</a> с ником и датой оплаты.</p></details>
+    <details><summary>Я ошибся в нике</summary><p>Напишите нам на почту: укажите ник, на который купили, и правильный ник — поможем перенести.</p></details>
+    <details><summary>Можно ли вернуть деньги?</summary><p>Да, до подключения покупки — полностью, а также если она не подключилась по нашей вине или покупку без согласия родителей сделал ребёнок младше 14 лет. Подробно — в <a href="refund.html">порядке возврата</a>.</p></details>
+    <details><summary>Безопасно ли платить?</summary><p>Платёж проходит через ЮKassa (ООО НКО «ЮМани»): данные карты вводятся на её странице и нам не передаются. По каждой оплате формируется чек в ФНС.</p></details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><h4>Продавец</h4>Самозанятый (налог на профессиональный доход)<br>ИНН 732716255996<br><a href="mailto:anarchymine@mail.ru">anarchymine@mail.ru</a></div>
+      <div><h4>Документы</h4><a href="offer.html">Публичная оферта</a><a href="refund.html">Возврат денег</a><a href="privacy.html">Политика обработки ПДн</a><a href="consent.html">Согласие на обработку ПДн</a><a href="contacts.html">Контакты</a></div>
+      <div><h4>Игра</h4><a href="/">Играть в браузере</a>Онлайн-игра AnarchyMine — без скачивания, прямо в браузере.</div>
+    </div>
+    <p class="disclaimer">AnarchyMine — независимый проект, не связан с Mojang Studios и Microsoft Corporation. Цены указаны в рублях, НДС не облагается. Игровая валюта и предметы — условные игровые единицы, не имеют денежной стоимости вне игры и не обмениваются на деньги.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Catalog baked in at publish time from donate.yml (also shown when the API is unreachable); the API's
+  // copy replaces it when it answers.
+  var PRODUCTS = [{"id": "vip_30", "title": "VIP на 30 дней", "description": "Зелёный префикс, вечное ночное зрение, набор раз в 2 недели (броня, инструменты, стройматериалы, кровать, семена) и ежедневный, 5 домов и приватов, 8 лотов на аукционе, /craft, /hat, +10% денег за опыт, +25% у золотого блока, при смерти сохраняется 1-й слот хотбара, до 3 шалкеров в эндер-сундуке", "price": 99, "days": 30, "category": "Привилегии", "tier": "vip"}, {"id": "vip_90", "title": "VIP на 3 месяца", "description": "Зелёный префикс, вечное ночное зрение, набор раз в 2 недели (броня, инструменты, стройматериалы, кровать, семена) и ежедневный, 5 домов и приватов, 8 лотов на аукционе, /craft, /hat, +10% денег за опыт, +25% у золотого блока, при смерти сохраняется 1-й слот хотбара, до 3 шалкеров в эндер-сундуке", "price": 249, "days": 90, "category": "Привилегии", "tier": "vip"}, {"id": "vip_180", "title": "VIP на 6 месяцев", "description": "Зелёный префикс, вечное ночное зрение, набор раз в 2 недели (броня, инструменты, стройматериалы, кровать, семена) и ежедневный, 5 домов и приватов, 8 лотов на аукционе, /craft, /hat, +10% денег за опыт, +25% у золотого блока, при смерти сохраняется 1-й слот хотбара, до 3 шалкеров в эндер-сундуке", "price": 449, "days": 180, "category": "Привилегии", "tier": "vip"}, {"id": "vip_365", "title": "VIP на 12 месяцев", "description": "Зелёный префикс, вечное ночное зрение, набор раз в 2 недели (броня, инструменты, стройматериалы, кровать, семена) и ежедневный, 5 домов и приватов, 8 лотов на аукционе, /craft, /hat, +10% денег за опыт, +25% у золотого блока, при смерти сохраняется 1-й слот хотбара, до 3 шалкеров в эндер-сундуке", "price": 799, "days": 365, "category": "Привилегии", "tier": "vip"}, {"id": "premium_30", "title": "Premium на 30 дней", "description": "Всё из VIP + голубой префикс, набор с алмазной бронёй, эндер-сундуком, шалкером, обсидианом и наковальней, цветной чат, вход на полный сервер, 8 домов, 10 приватов, 12 лотов, /ec, /anvil, +20% за опыт, +50% у золотого блока, при смерти сохраняются 2 первых слота хотбара, до 5 шалкеров в эндер-сундуке", "price": 199, "days": 30, "category": "Привилегии", "tier": "premium"}, {"id": "premium_90", "title": "Premium на 3 месяца", "description": "Всё из VIP + голубой префикс, набор с алмазной бронёй, эндер-сундуком, шалкером, обсидианом и наковальней, цветной чат, вход на полный сервер, 8 домов, 10 приватов, 12 лотов, /ec, /anvil, +20% за опыт, +50% у золотого блока, при смерти сохраняются 2 первых слота хотбара, до 5 шалкеров в эндер-сундуке", "price": 499, "days": 90, "category": "Привилегии", "tier": "premium"}, {"id": "premium_180", "title": "Premium на 6 месяцев", "description": "Всё из VIP + голубой префикс, набор с алмазной бронёй, эндер-сундуком, шалкером, обсидианом и наковальней, цветной чат, вход на полный сервер, 8 домов, 10 приватов, 12 лотов, /ec, /anvil, +20% за опыт, +50% у золотого блока, при смерти сохраняются 2 первых слота хотбара, до 5 шалкеров в эндер-сундуке", "price": 899, "days": 180, "category": "Привилегии", "tier": "premium"}, {"id": "premium_365", "title": "Premium на 12 месяцев", "description": "Всё из VIP + голубой префикс, набор с алмазной бронёй, эндер-сундуком, шалкером, обсидианом и наковальней, цветной чат, вход на полный сервер, 8 домов, 10 приватов, 12 лотов, /ec, /anvil, +20% за опыт, +50% у золотого блока, при смерти сохраняются 2 первых слота хотбара, до 5 шалкеров в эндер-сундуке", "price": 1599, "days": 365, "category": "Привилегии", "tier": "premium"}, {"id": "legend_30", "title": "Legend на 30 дней", "description": "Всё из Premium + золотой префикс, топовый набор (броня и оружие с Починкой, тотем, маяк, стол зачарований, незерит), /repair раз в сутки, золотой чат, объявление о входе, 12 домов, 20 приватов, 20 лотов, /feed, +30% за опыт, x2 у золотого блока, при смерти сохраняются 3 первых слота хотбара, до 10 шалкеров в эндер-сундуке", "price": 349, "days": 30, "category": "Привилегии", "tier": "legend"}, {"id": "legend_90", "title": "Legend на 3 месяца", "description": "Всё из Premium + золотой префикс, топовый набор (броня и оружие с Починкой, тотем, маяк, стол зачарований, незерит), /repair раз в сутки, золотой чат, объявление о входе, 12 домов, 20 приватов, 20 лотов, /feed, +30% за опыт, x2 у золотого блока, при смерти сохраняются 3 первых слота хотбара, до 10 шалкеров в эндер-сундуке", "price": 899, "days": 90, "category": "Привилегии", "tier": "legend"}, {"id": "legend_180", "title": "Legend на 6 месяцев", "description": "Всё из Premium + золотой префикс, топовый набор (броня и оружие с Починкой, тотем, маяк, стол зачарований, незерит), /repair раз в сутки, золотой чат, объявление о входе, 12 домов, 20 приватов, 20 лотов, /feed, +30% за опыт, x2 у золотого блока, при смерти сохраняются 3 первых слота хотбара, до 10 шалкеров в эндер-сундуке", "price": 1599, "days": 180, "category": "Привилегии", "tier": "legend"}, {"id": "legend_365", "title": "Legend на 12 месяцев", "description": "Всё из Premium + золотой префикс, топовый набор (броня и оружие с Починкой, тотем, маяк, стол зачарований, незерит), /repair раз в сутки, золотой чат, объявление о входе, 12 домов, 20 приватов, 20 лотов, /feed, +30% за опыт, x2 у золотого блока, при смерти сохраняются 3 первых слота хотбара, до 10 шалкеров в эндер-сундуке", "price": 2799, "days": 365, "category": "Привилегии", "tier": "legend"}, {"id": "money_5k", "title": "$5 000", "description": "Игровые деньги на счёт — для /shop, аукциона и кланов", "price": 99, "days": 0, "category": "Игровая валюта", "tier": ""}, {"id": "money_15k", "title": "$15 000", "description": "Игровые деньги на счёт — выгоднее на 16%", "price": 249, "days": 0, "category": "Игровая валюта", "tier": ""}, {"id": "money_50k", "title": "$50 000", "description": "Игровые деньги на счёт — выгоднее на 29%", "price": 699, "days": 0, "category": "Игровая валюта", "tier": ""}, {"id": "spawner", "title": "Спавнер", "description": "Блок спавнера. Моба в нём задаёт яйцо призыва (ПКМ яйцом по спавнеру). Сломанный спавнер ничего не роняет — ставьте с умом", "price": 349, "days": 0, "category": "Предметы", "tier": ""}, {"id": "elytra", "title": "Элитры", "description": "Крылья для полёта", "price": 249, "days": 0, "category": "Предметы", "tier": ""}, {"id": "fireworks", "title": "Фейерверки ×64", "description": "Ракеты для элитр, длительность полёта 3", "price": 79, "days": 0, "category": "Предметы", "tier": ""}, {"id": "eggs_villager", "title": "Житель ×2", "description": "Два яйца призыва жителя — для торговли и фермы", "price": 149, "days": 0, "category": "Яйца призыва", "tier": ""}, {"id": "eggs_golem", "title": "Железный голем", "description": "Яйцо призыва железного голема — охрана базы", "price": 149, "days": 0, "category": "Яйца призыва", "tier": ""}, {"id": "eggs_farm", "title": "Фермерский набор", "description": "По 2 яйца коровы, овцы, свиньи и курицы", "price": 99, "days": 0, "category": "Яйца призыва", "tier": ""}, {"id": "book_mending", "title": "Починка", "description": "Зачарованная книга «Починка»", "price": 99, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "book_protection", "title": "Защита IV ×4", "description": "Четыре книги «Защита IV» — на весь комплект брони", "price": 149, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "book_sharpness", "title": "Острота V", "description": "Зачарованная книга «Острота V»", "price": 79, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "book_tools", "title": "Эффективность V + Удача III", "description": "Две книги для кирки", "price": 129, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "rod_top", "title": "Удочка рыбака", "description": "Топовая удочка «Удочка рыбака» — Приманка III, Морская удача III, Прочность III, Починка — ловит быстро и почти одни сокровища", "price": 149, "days": 0, "category": "Предметы", "tier": ""}, {"id": "book_sharpness_6", "title": "Острота VI", "description": "Книга «Острота VI» — выше обычного максимума, в игре такую не найти. Наносится на меч или топор на наковальне", "price": 249, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "book_fortune_4", "title": "Удача IV", "description": "Книга «Удача IV» — выше обычного максимума, больше алмазов и руды с каждого блока. Наносится на кирку на наковальне", "price": 299, "days": 0, "category": "Зачарованные книги", "tier": ""}, {"id": "drill_1", "title": "Кирка-бур I", "description": "Алмазная кирка с редкими чарами «Бур I» — ломает сразу 2 блока (1×2). Эффективность V, Прочность III. Прочность тратится за каждый блок, Shift — копать по одному", "price": 199, "days": 0, "category": "Предметы", "tier": ""}, {"id": "drill_2", "title": "Кирка-бур II", "description": "Алмазная кирка с чарами «Бур II» — ломает сразу 4 блока (2×2). Эффективность V, Прочность III", "price": 349, "days": 0, "category": "Предметы", "tier": ""}, {"id": "drill_3", "title": "Кирка-бур III", "description": "Алмазная кирка с чарами «Бур III» — ломает сразу 9 блоков (3×3), туннели за секунды. Эффективность V, Прочность III", "price": 599, "days": 0, "category": "Предметы", "tier": ""}, {"id": "tnt_64", "title": "ТНТ ×64", "description": "Стак обычного динамита — для рейдов и копания. Взрыв через 4 с после поджига", "price": 59, "days": 0, "category": "Взрывчатка", "tier": ""}, {"id": "tnt_fast2", "title": "Быстрый ТНТ (2 с) ×16", "description": "Взрывается через 2 секунды после поджига вместо 4 — враг не успеет убежать или потушить. 16 штук = 64 обычных ТНТ в крафте", "price": 79, "days": 0, "category": "Взрывчатка", "tier": ""}, {"id": "tnt_fast1", "title": "Быстрый ТНТ (1 с) ×16", "description": "Взрыв всего через 1 секунду после поджига — для штурма баз и ловушек. 16 штук = 256 обычных ТНТ в крафте", "price": 199, "days": 0, "category": "Взрывчатка", "tier": ""}, {"id": "tnt_strong", "title": "Усиленный ТНТ ×16", "description": "Двойной урон по игрокам и мобам, радиус как у обычного ТНТ. Хорош против бронированных противников", "price": 99, "days": 0, "category": "Взрывчатка", "tier": ""}, {"id": "tnt_mighty", "title": "Мощный ТНТ ×16", "description": "Тройной урон по игрокам и мобам, радиус как у обычного ТНТ. Самый смертоносный динамит на сервере", "price": 199, "days": 0, "category": "Взрывчатка", "tier": ""}, {"id": "tnt_raid", "title": "Набор рейдера", "description": "64 ТНТ, 16 быстрых (1 с), 16 мощных ТНТ и огниво с Прочностью III — всё для штурма чужой базы. Выгоднее на 25%, чем по отдельности", "price": 349, "days": 0, "category": "Взрывчатка", "tier": ""}];
+  // Privilege kits from Essentials kits.yml (given once every two weeks).
+  var KITS = {"vip": [{"name": "Железный шлем", "icon": "icons/kit/iron_helmet.png", "count": 1, "ench": ["Защита I"]}, {"name": "Железный нагрудник", "icon": "icons/kit/iron_chestplate.png", "count": 1, "ench": ["Защита I"]}, {"name": "Железные поножи", "icon": "icons/kit/iron_leggings.png", "count": 1, "ench": ["Защита I"]}, {"name": "Железные ботинки", "icon": "icons/kit/iron_boots.png", "count": 1, "ench": ["Защита I"]}, {"name": "Железный меч", "icon": "icons/kit/iron_sword.png", "count": 1, "ench": ["Острота II"]}, {"name": "Железная кирка", "icon": "icons/kit/iron_pickaxe.png", "count": 1, "ench": ["Эффективность III"]}, {"name": "Железный топор", "icon": "icons/kit/iron_axe.png", "count": 1, "ench": []}, {"name": "Железная лопата", "icon": "icons/kit/iron_shovel.png", "count": 1, "ench": []}, {"name": "Дубовое бревно", "icon": "icons/kit/oak_log.png", "count": 64, "ench": []}, {"name": "Булыжник", "icon": "icons/kit/cobblestone.png", "count": 64, "ench": []}, {"name": "Стекло", "icon": "icons/kit/glass.png", "count": 32, "ench": []}, {"name": "Факел", "icon": "icons/kit/torch.png", "count": 32, "ench": []}, {"name": "Белая кровать", "icon": "icons/kit/white_bed.png", "count": 1, "ench": []}, {"name": "Ведро воды", "icon": "icons/kit/water_bucket.png", "count": 1, "ench": []}, {"name": "Семена пшеницы", "icon": "icons/kit/wheat_seeds.png", "count": 16, "ench": []}, {"name": "Костная мука", "icon": "icons/kit/bone_meal.png", "count": 16, "ench": []}, {"name": "Стейк", "icon": "icons/kit/cooked_beef.png", "count": 32, "ench": []}, {"name": "Эндер-жемчуг", "icon": "icons/kit/ender_pearl.png", "count": 8, "ench": []}], "premium": [{"name": "Алмазный шлем", "icon": "icons/kit/diamond_helmet.png", "count": 1, "ench": ["Защита II", "Прочность II"]}, {"name": "Алмазный нагрудник", "icon": "icons/kit/diamond_chestplate.png", "count": 1, "ench": ["Защита II", "Прочность II"]}, {"name": "Алмазные поножи", "icon": "icons/kit/diamond_leggings.png", "count": 1, "ench": ["Защита II", "Прочность II"]}, {"name": "Алмазные ботинки", "icon": "icons/kit/diamond_boots.png", "count": 1, "ench": ["Защита II", "Прочность II"]}, {"name": "Алмазный меч", "icon": "icons/kit/diamond_sword.png", "count": 1, "ench": ["Острота III"]}, {"name": "Лук", "icon": "icons/kit/bow.png", "count": 1, "ench": ["Сила III"]}, {"name": "Стрела", "icon": "icons/kit/arrow.png", "count": 64, "ench": []}, {"name": "Алмазная кирка", "icon": "icons/kit/diamond_pickaxe.png", "count": 1, "ench": ["Эффективность IV", "Прочность III"]}, {"name": "Алмазный топор", "icon": "icons/kit/diamond_axe.png", "count": 1, "ench": []}, {"name": "Эндер-сундук", "icon": "icons/kit/ender_chest.png", "count": 1, "ench": []}, {"name": "Шалкеровый ящик", "icon": "icons/kit/shulker_box.png", "count": 1, "ench": []}, {"name": "Обсидиан", "icon": "icons/kit/obsidian.png", "count": 32, "ench": []}, {"name": "Наковальня", "icon": "icons/kit/anvil.png", "count": 1, "ench": []}, {"name": "Воронка", "icon": "icons/kit/hopper.png", "count": 4, "ench": []}, {"name": "Железный слиток", "icon": "icons/kit/iron_ingot.png", "count": 16, "ench": []}, {"name": "Яйцо призыва коровы", "icon": "icons/kit/cow_spawn_egg.png", "count": 4, "ench": []}, {"name": "Костная мука", "icon": "icons/kit/bone_meal.png", "count": 64, "ench": []}, {"name": "Золотое яблоко", "icon": "icons/kit/golden_apple.png", "count": 8, "ench": []}, {"name": "Эндер-жемчуг", "icon": "icons/kit/ender_pearl.png", "count": 16, "ench": []}, {"name": "Пузырёк опыта", "icon": "icons/kit/experience_bottle.png", "count": 32, "ench": []}], "legend": [{"name": "Алмазный шлем", "icon": "icons/kit/diamond_helmet.png", "count": 1, "ench": ["Защита IV", "Прочность III", "Починка"]}, {"name": "Алмазный нагрудник", "icon": "icons/kit/diamond_chestplate.png", "count": 1, "ench": ["Защита IV", "Прочность III", "Починка"]}, {"name": "Алмазные поножи", "icon": "icons/kit/diamond_leggings.png", "count": 1, "ench": ["Защита IV", "Прочность III", "Починка"]}, {"name": "Алмазные ботинки", "icon": "icons/kit/diamond_boots.png", "count": 1, "ench": ["Защита IV", "Прочность III", "Починка"]}, {"name": "Алмазный меч", "icon": "icons/kit/diamond_sword.png", "count": 1, "ench": ["Острота V", "Заговор огня II", "Прочность III", "Починка"]}, {"name": "Лук", "icon": "icons/kit/bow.png", "count": 1, "ench": ["Сила V", "Бесконечность", "Воспламенение"]}, {"name": "Стрела", "icon": "icons/kit/arrow.png", "count": 1, "ench": []}, {"name": "Тотем бессмертия", "icon": "icons/kit/totem_of_undying.png", "count": 1, "ench": []}, {"name": "Зачарованное золотое яблоко", "icon": "icons/kit/enchanted_golden_apple.png", "count": 2, "ench": []}, {"name": "Алмазная кирка", "icon": "icons/kit/diamond_pickaxe.png", "count": 1, "ench": ["Эффективность V", "Удача III", "Прочность III", "Починка"]}, {"name": "Алмазная кирка", "icon": "icons/kit/diamond_pickaxe.png", "count": 1, "ench": ["Шёлковое касание", "Эффективность V"]}, {"name": "Алмазный топор", "icon": "icons/kit/diamond_axe.png", "count": 1, "ench": ["Эффективность V"]}, {"name": "Шалкеровый ящик", "icon": "icons/kit/shulker_box.png", "count": 2, "ench": []}, {"name": "Эндер-сундук", "icon": "icons/kit/ender_chest.png", "count": 1, "ench": []}, {"name": "Обсидиан", "icon": "icons/kit/obsidian.png", "count": 64, "ench": []}, {"name": "Чародейский стол", "icon": "icons/kit/enchanting_table.png", "count": 1, "ench": []}, {"name": "Книжная полка", "icon": "icons/kit/bookshelf.png", "count": 15, "ench": []}, {"name": "Маяк", "icon": "icons/kit/beacon.png", "count": 1, "ench": []}, {"name": "Фейерверк", "icon": "icons/kit/firework_rocket.png", "count": 64, "ench": []}, {"name": "Эндер-жемчуг", "icon": "icons/kit/ender_pearl.png", "count": 16, "ench": []}, {"name": "Пузырёк опыта", "icon": "icons/kit/experience_bottle.png", "count": 64, "ench": []}, {"name": "Яйцо призыва крестьянина", "icon": "icons/kit/villager_spawn_egg.png", "count": 2, "ench": []}, {"name": "Яйцо призыва коровы", "icon": "icons/kit/cow_spawn_egg.png", "count": 4, "ench": []}, {"name": "Незеритовый слиток", "icon": "icons/kit/netherite_ingot.png", "count": 1, "ench": []}]};
+  var params = new URLSearchParams(location.search);
+  var api = "https://anarchymine.ru/api/donate/";
+  var override = params.get("api");
+  if (override && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//.test(override)) api = override;   // local checks
+  var selected = null;
+  var $ = function (id) { return document.getElementById(id); };
+  if (params.get("paid")) $("paid").style.display = "block";
+  var nick = params.get("nick");
+  try { if (!nick) nick = localStorage.getItem("am_nick"); } catch (e) {}
+  if (nick) $("nick").value = nick;
+  try { var mail = localStorage.getItem("am_email"); if (mail) $("email").value = mail; } catch (e) {}
+
+  function price(p) { return p.price + " ₽"; }
+  var TERMS = { 30: "1 месяц", 90: "3 месяца", 180: "6 месяцев", 365: "12 месяцев" };
+  var SHORT = { 30: "1 мес", 90: "3 мес", 180: "6 мес", 365: "12 мес" };
+  function term(p) { return TERMS[p.days] || (p.days + " дн."); }
+  function tierOf(p) { var m = /^(vip|premium|legend)_(\d+)$/.exec(p.id); return p.tier || (m ? m[1] : ""); }
+
+  var TIER = { vip: ["[VIP]", "#55ff55"], premium: ["[Premium]", "#55ffff"], legend: ["[Legend]", "#ffaa00"] };
+  var ICONS = { spawner: "🔥", elytra: "🪽", fireworks: "🎆", eggs_villager: "🧑‍🌾", eggs_golem: "🛡️", eggs_farm: "🐄",
+    book_mending: "📕", book_protection: "📘", book_sharpness: "📗", book_tools: "📙", book_sharpness_6: "📗", book_fortune_4: "📙", rod_top: "🎣" };
+  // Item icons (icons/<id>.png) when the site carries them; emoji / text previews otherwise.
+  function icon(p, then) {
+    var img = new Image();
+    img.className = "icon";
+    img.alt = "";
+    img.onload = function () { then(img); };
+    img.src = "icons/" + (tierOf(p) || p.id) + ".png";
+  }
+  function preview(p, box) {
+    var name = ($("nick").value || "Steve").slice(0, 16);
+    var tier = TIER[tierOf(p)];
+    if (tier) {
+      box.innerHTML = '<span class="row"><span style="text-shadow:2px 2px 0 #0008"></span><span class="pn" style="text-shadow:2px 2px 0 #0008"></span></span>';
+      box.querySelector("span span").textContent = tier[0];
+      box.querySelector("span span").style.color = tier[1];
+      box.querySelector(".pn").textContent = name;
+      icon(p, function (img) { img.style.width = img.style.height = "48px"; box.firstChild.insertBefore(img, box.firstChild.firstChild); });
+    } else if (p.id.indexOf("money") === 0) {
+      box.innerHTML = '<span class="row"><span style="font:800 24px Unbounded,sans-serif;color:#ffc63d;text-shadow:0 3px 0 #7a4a00"></span></span>';
+      box.querySelector("span span").textContent = p.title;
+      icon(p, function (img) { img.style.width = img.style.height = "48px"; box.firstChild.insertBefore(img, box.firstChild.firstChild); });
+    } else {
+      box.innerHTML = '<span style="font-size:44px;filter:drop-shadow(0 3px 0 #0008)"></span>';
+      box.firstChild.textContent = ICONS[p.id] || "🎁";
+      icon(p, function (img) {
+        box.innerHTML = "";
+        if (p.id.indexOf("book") === 0) {
+          var g = document.createElement("span");
+          g.className = "glint";
+          g.style.setProperty("--m", "url(" + img.src + ")");
+          g.appendChild(img);
+          box.appendChild(g);
+        } else {
+          box.appendChild(img);
+        }
+      });
+    }
+  }
+  function particles(c) {
+    var ctx = c.getContext("2d"), parts = [], t = 0;
+    function frame() {
+      c.width = c.clientWidth; c.height = c.clientHeight;
+      t += 0.03;
+      var x = c.width / 2 + Math.sin(t) * c.width * 0.32, y = c.height * 0.62 + Math.sin(t * 2) * 8;
+      parts.push({ x: x, y: y, vx: (Math.random() - 0.5) * 0.6, vy: -Math.random() * 0.8 - 0.2, life: 1, hue: (t * 60) % 360 });
+      ctx.clearRect(0, 0, c.width, c.height);
+      for (var i = parts.length - 1; i >= 0; i--) {
+        var q = parts[i];
+        q.x += q.vx; q.y += q.vy; q.life -= 0.015;
+        if (q.life <= 0) { parts.splice(i, 1); continue; }
+        ctx.fillStyle = "hsla(" + q.hue + ",90%,65%," + q.life + ")";
+        var s = 4 * q.life + 1;
+        ctx.fillRect(Math.round(q.x), Math.round(q.y), s, s);
+      }
+      ctx.fillStyle = "#ffc63d";
+      ctx.fillRect(Math.round(x) - 4, Math.round(y) - 12, 8, 12);
+      requestAnimationFrame(frame);
+    }
+    frame();
+  }
+
+  var tab = "priv";
+  if (params.get("product") && !/^(vip|premium|legend)_/.test(params.get("product"))) tab = "res";
+  document.querySelectorAll(".tab").forEach(function (b) {
+    b.classList.toggle("on", b.dataset.tab === tab);
+    b.addEventListener("click", function () {
+      tab = b.dataset.tab;
+      document.querySelectorAll(".tab").forEach(function (x) { x.classList.toggle("on", x === b); });
+      render(PRODUCTS);
+    });
+  });
+  function render(list) {
+    list = list.filter(function (p) { return (p.category === "Привилегии") === (tab === "priv"); });
+    var root = $("products"), grids = {};
+    root.innerHTML = "";
+    // Privileges: one card per tier with its periods side by side ("forever" ones are gone).
+    var periods = {};
+    list = list.filter(function (p) {
+      var t = tierOf(p);
+      if (!t) return true;
+      if (!(p.days > 0)) return false;
+      if (periods[t]) { periods[t].push(p); return false; }
+      periods[t] = [p];
+      return true;
+    });
+    list.forEach(function (p) {
+      var opts = periods[tierOf(p)];
+      if (opts) {
+        opts.sort(function (a, b) { return a.days - b.days; });
+        var want = params.get("product");
+        p = opts.filter(function (o) { return (selected && selected.id === o.id) || (!selected && want === o.id); })[0] || opts[0];
+      }
+      var cat = p.category || "Товары";
+      if (!grids[cat]) {
+        if (tab === "priv") { grids[cat] = document.createElement("div"); grids[cat].className = "products"; root.appendChild(grids[cat]); }
+      }
+      if (!grids[cat]) {
+        var h = document.createElement("h3"); h.className = "cat"; h.textContent = cat; root.appendChild(h);
+        grids[cat] = document.createElement("div"); grids[cat].className = "products"; root.appendChild(grids[cat]);
+      }
+      var card = document.createElement("label");
+      card.className = "product";
+      card.innerHTML = '<input type="radio" name="product"><span class="check"></span><div class="preview"></div>' +
+        '<div class="ptitle"></div><div class="pdesc"></div><div class="price"></div>';
+      card.querySelector(".ptitle").textContent = p.title;
+      card.querySelector(".pdesc").textContent = p.description;
+      card.querySelector(".price").innerHTML = price(p) + ' <small></small>';
+      card.querySelector(".price small").textContent = p.days > 0 ? "на " + term(p) : "";
+      preview(p, card.querySelector(".preview"));
+      if (opts) {
+        card.querySelector(".ptitle").textContent = p.title.replace(/ на .*$/, "");
+        var monthly = opts[0].price * 30 / opts[0].days;
+        var row = document.createElement("div");
+        row.className = "terms";
+        opts.forEach(function (o) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "term" + (o === p ? " on" : "");
+          b.innerHTML = "<b></b><span></span>";
+          b.firstChild.textContent = SHORT[o.days] || (o.days + " дн.");
+          b.lastChild.textContent = o.price + " ₽";
+          var save = Math.round((1 - o.price / (monthly * o.days / 30)) * 100);
+          if (save >= 5) { var s = document.createElement("i"); s.textContent = "−" + save + "%"; b.appendChild(s); }
+          b.addEventListener("click", function (ev) {
+            ev.preventDefault(); ev.stopPropagation();
+            p = o;
+            row.querySelectorAll(".term").forEach(function (x) { x.classList.toggle("on", x === b); });
+            card.querySelector(".price").firstChild.nodeValue = price(o) + " ";
+            card.querySelector(".price small").textContent = "на " + term(o) + (o.days > 30 ? " · " + Math.round(o.price * 30 / o.days) + " ₽/мес" : "");
+            choose(o, card);
+          });
+          row.appendChild(b);
+        });
+        card.querySelector(".pdesc").before(row);
+        if (p.days > 30) card.querySelector(".price small").textContent += " · " + Math.round(p.price * 30 / p.days) + " ₽/мес";
+      }
+      var kit = KITS[tierOf(p) || p.id];
+      if (kit) {
+        var k = document.createElement("div");
+        k.className = "kit";
+        k.innerHTML = '<div class="kit-h">Набор раз в 2 недели (/kit ' + (tierOf(p) || p.id) + ')</div><div class="kit-g"></div>';
+        kit.forEach(function (it) {
+          var cell = document.createElement("span");
+          cell.className = "slot" + (it.ench.length ? " ench" : "");
+          cell.title = it.name + (it.count > 1 ? " ×" + it.count : "") + (it.ench.length ? "\n" + it.ench.join(", ") : "");
+          cell.innerHTML = '<img alt="">' + (it.count > 1 ? '<b></b>' : "");
+          cell.firstChild.src = it.icon;
+          if (it.count > 1) cell.lastChild.textContent = it.count;
+          k.lastChild.appendChild(cell);
+        });
+        card.querySelector(".pdesc").after(k);
+      }
+      card.addEventListener("click", function () { choose(p, card); });
+      grids[cat].appendChild(card);
+      if ((!selected && params.get("product") === p.id) || (selected && selected.id === p.id)) choose(p, card);
+    });
+  }
+  function choose(p, card) {
+    selected = p;
+    document.querySelectorAll(".product").forEach(function (c) { c.classList.toggle("sel", c === card); });
+    card.querySelector("input").checked = true;
+    $("sel-name").textContent = p.title.replace(" на 30 дней", " на 1 месяц");
+    $("sel-price").textContent = price(p);
+  }
+  render(PRODUCTS);
+  fetch(api + "products").then(function (r) { return r.json(); }).then(function (d) {
+    if (d.products && d.products.length) { var keep = selected && selected.id; PRODUCTS = d.products;
+      selected = PRODUCTS.filter(function (p) { return p.id === keep; })[0] || null; render(PRODUCTS); }
+  }).catch(function () {});
+
+  function fail(text) { var m = $("msg"); m.className = "msg err"; m.textContent = text; }
+  $("order").addEventListener("submit", function (e) {
+    e.preventDefault();
+    $("msg").className = "msg";
+    var n = $("nick").value.trim(), mail = $("email").value.trim();
+    $("nick").classList.toggle("bad", !/^[A-Za-z0-9_]{3,16}$/.test(n));
+    $("email").classList.toggle("bad", !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail));
+    if (!selected) return fail("Выберите, что купить.");
+    if (!/^[A-Za-z0-9_]{3,16}$/.test(n)) return fail("Ник: 3–16 символов, латинские буквы, цифры и _.");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail)) return fail("Проверьте адрес почты.");
+    if (!$("consent").checked) return fail("Отметьте согласие с офертой и на обработку персональных данных.");
+    try { localStorage.setItem("am_nick", n); localStorage.setItem("am_email", mail); } catch (e2) {}
+    $("pay").disabled = true;
+    $("pay").textContent = "Создаём платёж…";
+    fetch(api + "create", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nick: n, email: mail, product: selected.id, consent: "true" }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.url) { location.href = d.url; return; }
+        fail(d.error || "Не получилось создать платёж, попробуйте позже.");
+      })
+      .catch(function () { fail("Сервер оплаты недоступен, попробуйте через пару минут."); })
+      .finally(function () { $("pay").disabled = false; $("pay").textContent = "Перейти к оплате"; });
+  });
+  $("nick").addEventListener("input", function () {
+    document.querySelectorAll(".pn").forEach(function (s) { s.textContent = ($("nick").value || "Steve").slice(0, 16); });
+  });
+})();
+</script>
+</body>
+</html>

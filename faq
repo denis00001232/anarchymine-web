@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Частые вопросы — AnarchyMine, майнкрафт в браузере</title><meta name="description" content="Ответы на частые вопросы об AnarchyMine: бесплатно ли, нужна ли лицензия, как играть с друзьями, почему долго грузится."><meta name="robots" content="index, follow"><link rel="canonical" href="https://play.anarchymine.ru/faq"><meta property="og:type" content="article"><meta property="og:site_name" content="AnarchyMine"><meta property="og:locale" content="ru_RU"><meta property="og:url" content="https://play.anarchymine.ru/faq"><meta property="og:title" content="Частые вопросы — AnarchyMine, майнкрафт в браузере"><meta property="og:description" content="Ответы на частые вопросы об AnarchyMine: бесплатно ли, нужна ли лицензия, как играть с друзьями, почему долго грузится."><meta property="og:image" content="https://play.anarchymine.ru/og.png"><style>body{margin:0;background:#1d1d1d;color:#e0e0e0;font:16px/1.6 system-ui,sans-serif}main{max-width:760px;margin:0 auto;padding:24px 16px 64px}h1{font-size:26px;color:#ffcf40}h2{font-size:19px;margin-top:28px;color:#fff}a{color:#7cc4ff}nav{margin-bottom:20px;font-size:14px}nav a{margin-right:14px;display:inline-block}code{color:#ffcf40}</style><!-- Yandex.Metrika counter (tools/seo_inject.py puts the number from web/seo/metrika_id); webvisor/clickmap are
+     useless over a canvas game. window.amGoal(name) reports a goal (the game calls it: menu shown, joined a server);
+     window.amParams(json) adds visit parameters (the game's frame rate reports). -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=113258943", "ym");
+ym(113258943, "init", {ssr: true, clickmap: false, referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true});
+window.amGoal = function (name) { try { ym(113258943, "reachGoal", name); } catch (e) {} };
+window.amParams = function (json) { try { ym(113258943, "params", JSON.parse(json)); } catch (e) {} };
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113258943" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- VK Ads pixel (Top.Mail.Ru counter; tools/seo_inject.py puts the number from web/seo/vk_pixel_id): page view +
+     the same goals as Metrika — window.amGoal is wrapped so every game goal also goes to VK (ads optimization). -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "3800632", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = "https://top-fwz1.mail.ru/js/code.js";
+  var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "tmr-code");
+(function () {
+  var prev = window.amGoal;
+  window.amGoal = function (name) {
+    if (prev) prev(name);
+    try { _tmr.push({type: "reachGoal", id: "3800632", goal: name}); } catch (e) {}
+  };
+})();
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3800632;js=na" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
+</head><body><main><nav><a href="/">Играть</a><a href="/kak-igrat">Как играть</a><a href="/anarhiya">Анархия</a><a href="/privaty">Приваты</a><a href="/s-telefona">С телефона</a><a href="/faq">Вопросы</a><a href="/donate">Донат</a></nav><h1>Частые вопросы</h1>
+<h2>Это бесплатно?</h2>
+<p>Да. Играть можно бесплатно и без ограничений. Есть необязательный <a href="/donate">донат</a> с привилегиями и наборами.</p>
+<h2>Нужна лицензия Minecraft или Java?</h2>
+<p>Нет. Игра запускается прямо в браузере, лаунчер и аккаунт Microsoft не нужны.</p>
+<h2>Как играть с друзьями?</h2>
+<p>Отправьте другу ссылку <a href="/">play.anarchymine.ru</a> — все играют на одном сервере. Найдите друг друга командой <code>/tpa ник</code> или создайте клан.</p>
+<h2>Есть одиночная игра?</h2>
+<p>Да, в меню есть «Одиночная игра»: свой мир, который сохраняется в браузере.</p>
+<h2>Почему долго грузится?</h2>
+<p>При первом входе браузер скачивает игру и звуки. Дальше они берутся из кэша, и загрузка заметно быстрее. Если загрузка встала — обновите страницу.</p>
+<h2>Пропал аккаунт</h2>
+<p>Аккаунт хранится в браузере. Очистка данных сайта, режим инкогнито или другой браузер — это новый аккаунт. Чтобы играть с одним аккаунтом на разных устройствах, заходите через Яндекс Игры, войдя в аккаунт Яндекса.</p>
+<h2>Где правила и команды?</h2>
+<p>В игре — команда <code>/help</code>. Коротко — на страницах <a href="/anarhiya">анархия</a> и <a href="/privaty">приваты и экономика</a>.</p>
+</main></body></html>
